@@ -1,60 +1,34 @@
 # StockFlow – Inventory Management System
 
-## Overview
-StockFlow is a backend inventory management system built using Node.js, Express, Sequelize, and PostgreSQL (Supabase).  
-This project was developed as part of a technical assignment to demonstrate database design, relationships, and inventory logic.
+# StockFlow Case Study
+
+This repository contains my solution for the **StockFlow B2B Inventory Management** case study.  
+The assignment is divided into three parts: code review & debugging, database design, and API implementation.
 
 ---
 
-## Tech Stack
-- Node.js
-- Express.js
-- Sequelize ORM
-- PostgreSQL (Supabase)
-- dotenv
-- Nodemon
+## Description
+
+The goal of this case study was to:
+
+1. Review and debug starter code.
+2. Design and implement a relational database schema using PostgreSQL.
+3. Implement RESTful APIs using Node.js, Express, and Sequelize ORM.
+
+The solution includes properly defined models, relationships, validations, and API endpoints.  
+All endpoints were tested with Postman, and sample responses are included in the corresponding part folders.
 
 ---
 
-## Project Structure
-stockflow-assignment/
-├── config/
-│   └── db.js
-├── models/
-│   ├── Product.js
-│   ├── Supplier.js
-│   ├── Warehouse.js
-│   ├── Inventory.js
-│   └── Sale.js
-├── routes/
-│   ├── products.js
-│   ├── suppliers.js
-│   ├── warehouses.js
-│   ├── inventories.js
-│   └── alerts.js
-├── server.js
-├── .env
-└── README.md
+## Parts
 
----
+1. [Part 1: Code Review & Debugging](part1_code_review.md)  
+   Fixes errors in starter code, resolves undefined imports, and ensures the server runs without crashes.
 
-## Part 2 – Backend & Database Implementation
+2. [Part 2: Database Design](part2_database_design.md)  
+   Sequelize models and PostgreSQL tables for Product, Inventory, Warehouse, Supplier, and Sales.  
+   Includes relationships, constraints, and sample insert queries.
 
-### Tech Stack
-- Node.js
-- Express.js
-- PostgreSQL (Supabase)
-- Sequelize ORM
-
-### Features Implemented
-- Database schema for Products, Warehouses, Inventories, Suppliers, Sales
-- Proper foreign key relationships
-- SKU uniqueness validation
-- Inventory tracking per warehouse
-- Low stock threshold support
-- REST APIs implemented and tested using Postman
-
-### Setup Instructions
-1. Clone repository
-2. Run `npm install`
-3. Create `.env` file:
+3. [Part 3: API Implementation](part3_api_implementation/)  
+   REST APIs for creating products, managing inventory, fetching low-stock alerts, and sales.  
+   Includes sample JSON responses and error handling.
