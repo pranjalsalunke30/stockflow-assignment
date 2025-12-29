@@ -1,0 +1,64 @@
+Part 2: Database Design
+
+What I did:
+
+Created Sequelize models: Product, Inventory, Warehouse, Supplier, Sales.
+
+Defined relationships:
+
+Product → Supplier
+
+Inventory → Product + Warehouse
+
+Sales → Product + Warehouse
+
+Added constraints: NOT NULL, UNIQUE, FOREIGN KEY.
+
+Synced models to PostgreSQL.
+
+Solution:
+
+-- Example: Product Table
+CREATE TABLE "Products" (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    sku VARCHAR(255) UNIQUE NOT NULL,
+    price DECIMAL(10,2) NOT NULL,
+    low_stock_threshold INTEGER DEFAULT 10
+);
+
+-- Example: Inventory Table
+CREATE TABLE "Inventories" (
+    id SERIAL PRIMARY KEY,
+    product_id INTEGER REFERENCES "Products"(id) ON DELETE SET NULL,
+    warehouse_id INTEGER REFERENCES "Warehouses"(id) ON DELETE SET NULL,
+    quantity INTEGER DEFAULT 0
+);
+
+
+Verified insertion of sample data in Postman:
+
+POST /api/products
+{
+  "name": "Product A",
+  "sku": "PRODA001",
+  "price": 150,
+  "supplier_id": 1,
+  "warehouse_id": 1,
+  "quantity": 50
+}
+
+Response:
+{
+  "message": "Product created with inventory",
+  "product_id": 2
+}
+
+
+Assumptions:
+
+Each product belongs to one supplier.
+
+Inventory per warehouse.
+
+Sale always references a product and warehouse.
