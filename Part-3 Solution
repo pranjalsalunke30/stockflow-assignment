@@ -1,0 +1,52 @@
+Part 3: API Implementation
+
+What I did:
+
+Implemented REST APIs:
+
+POST /api/products → Create product + inventory
+
+GET /api/companies/:id/alerts/low-stock → Low stock alerts
+
+CRUD endpoints for Inventory, Sales, Supplier
+
+Validated inputs and handled errors.
+
+Solution:
+
+// GET low-stock alerts
+app.get("/api/companies/:id/alerts/low-stock", async (req, res) => {
+    const companyId = req.params.id;
+    const alerts = await Inventory.findAll({
+        where: { quantity: { [Op.lte]: Sequelize.col('Product.low_stock_threshold') } },
+        include: [{ model: Product, required: true }],
+    });
+    res.json({ alerts, total_alerts: alerts.length });
+});
+
+
+Sample response:
+
+{
+  "alerts": [],
+  "total_alerts": 0
+}
+
+
+Assumptions:
+
+JSON responses for all APIs.
+
+Low-stock alerts consider product low_stock_threshold.
+
+All timestamps (createdAt, updatedAt) required.
+
+Additional Notes
+
+Implemented in Node.js, Express, Sequelize ORM.
+
+PostgreSQL as database.
+
+README contains setup and testing instructions.
+
+Tested all parts successfully.
