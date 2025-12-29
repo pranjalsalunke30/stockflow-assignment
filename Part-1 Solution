@@ -1,0 +1,38 @@
+Part 1: Code Review & Debugging
+
+What I did:
+
+Fixed missing imports, undefined variables, and Sequelize associations in the starter code.
+
+Ensured server runs without crashes.
+
+Tested API endpoints with Postman.
+
+Solution / Code Changes:
+
+// models/Product.js
+const { DataTypes } = require("sequelize");
+const sequelize = require("../config/db");
+const Supplier = require("./Supplier"); // Added missing import
+
+const Product = sequelize.define("Product", {
+    name: { type: DataTypes.STRING, allowNull: false },
+    sku: { type: DataTypes.STRING, allowNull: false, unique: true },
+    price: { type: DataTypes.DECIMAL(10,2), allowNull: false },
+    low_stock_threshold: { type: DataTypes.INTEGER, defaultValue: 10 },
+});
+
+Product.belongsTo(Supplier, { foreignKey: "supplier_id" });
+
+module.exports = Product;
+
+
+Fixed similar issues in Inventory, Warehouse, Supplier models.
+
+API endpoints tested with Postman successfully.
+
+Assumptions:
+
+Endpoints return JSON responses.
+
+Default values for some fields like low_stock_threshold are 10.
