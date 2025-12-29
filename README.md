@@ -22,13 +22,13 @@ All endpoints were tested with Postman, and sample responses are included in the
 
 ## Parts
 
-1. [Part 1: Code Review & Debugging](part1_code_review.md)  
+1. [Part 1: Code Review & Debugging](Part-1 Solution.md)  
    Fixes errors in starter code, resolves undefined imports, and ensures the server runs without crashes.
 
-2. [Part 2: Database Design](part2_database_design.md)  
+2. [Part 2: Database Design](Part-2 Solution)  
    Sequelize models and PostgreSQL tables for Product, Inventory, Warehouse, Supplier, and Sales.  
    Includes relationships, constraints, and sample insert queries.
 
-3. [Part 3: API Implementation](part3_api_implementation/)  
+3. [Part 3: API Implementation](Part-3 Solution.md)  
    REST APIs for creating products, managing inventory, fetching low-stock alerts, and sales.  
    Includes sample JSON responses and error handling.
